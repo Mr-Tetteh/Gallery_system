@@ -14,19 +14,19 @@ class Db_object{
     }
 
 
-    public static function find_by_id($user_id){
+    public static function find_by_id($id){
 
         global $database;
 
-//            $by_id = $database->query("SELECT * FROM users WHERE user_id = $user_id");
+//            $by_id = $database->query("SELECT * FROM users WHERE id = $id");
 
-//            $by_id = static::find_by_query("SELECT * FROM users WHERE  user_id = $user_id");
+//            $by_id = static::find_by_query("SELECT * FROM users WHERE  id = $id");
 
 //            $found_user = mysqli_fetch_array($by_id);
 //            return $found_user;
 
 
-        $the_result_array = static::find_by_query("SELECT * FROM ". static::$db_table ."  WHERE  id = $user_id");
+        $the_result_array = static::find_by_query("SELECT * FROM ". static::$db_table ."  WHERE  id = $id");
 
         //            ******Alternative with ternary******
 
@@ -63,7 +63,7 @@ class Db_object{
 
         $the_object  = new $calling_class;
 
-//            $the_object->id = $found_user['user_id'];
+//            $the_object->id = $found_user['id'];
 //            $the_object->username = $found_user['username'];
 //            $the_object->first_name = $found_user['first_name'];
 //            $the_object->last_name = $found_user['last_name'];

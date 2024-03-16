@@ -1,17 +1,8 @@
-<?php
-ini_set('display_errors', '1');
-ini_set('display_startup_errors', '1');
-error_reporting(E_ALL);
-?>
 <?php include("includes/header.php"); ?>
-
 <?php
+$session = new Session();
+if ($session->is_signed_in()) {redirect("login.php");} ?>
 
-
-
-
-
-?>
         <!-- Navigation -->
         <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
 

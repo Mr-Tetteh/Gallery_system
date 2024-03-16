@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Mar 14, 2024 at 01:59 AM
+-- Generation Time: Mar 15, 2024 at 08:35 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -30,7 +30,7 @@ SET time_zone = "+00:00";
 CREATE TABLE `photos` (
   `id` int(11) NOT NULL,
   `title` varchar(255) NOT NULL,
-  `description` text NOT NULL,
+  `description` varchar(255) NOT NULL,
   `filename` varchar(255) NOT NULL,
   `type` varchar(255) NOT NULL,
   `size` int(11) NOT NULL
@@ -41,7 +41,9 @@ CREATE TABLE `photos` (
 --
 
 INSERT INTO `photos` (`id`, `title`, `description`, `filename`, `type`, `size`) VALUES
-(1, 'new', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda consequuntur in itaque iure, necessitatibus obcaecati odit perspiciatis provident quasi sequi tempore unde vero voluptates? Accusantium dolor itaque obcaecati ullam vitae.', 'image.jpg', 'image', 11);
+(1, 'new', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda consequuntur in itaque iure, necessitatibus obcaecati odit perspiciatis provident quasi sequi tempore unde vero voluptates? Accusantium dolor itaque obcaecati ullam vitae.', 'image.jpg', 'image', 11),
+(22, 'student', '', '', '', 20),
+(23, 'man', 'Hello guys', '', '', 20);
 
 -- --------------------------------------------------------
 
@@ -68,9 +70,9 @@ INSERT INTO `users` (`id`, `username`, `password`, `first_name`, `last_name`) VA
 (8, 'Mac', '123', 'Mac', 'Book'),
 (22, 'Sarah', '123', 'Sarah', 'Mensah'),
 (23, 'Work', '123', 'Work', 'Tetteh'),
-(24, 'student', '123', 'php', 'Tetteh'),
-(25, 'Aba', '123', 'Aba', 'Mensah'),
-(27, 'student', '123', 'php', 'student');
+(24, 'student', '123', 'php', 'Tettehhh'),
+(25, 'Aba', '123', 'Rony', 'Rony'),
+(29, 'student', '123', 'php', 'Tettehhh');
 
 --
 -- Indexes for dumped tables
@@ -96,13 +98,13 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `photos`
 --
 ALTER TABLE `photos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(22) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+  MODIFY `id` int(22) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -12,7 +12,7 @@ class Photo extends Db_object
     public $type;
     public $size;
 
-    public $temp_path;
+    public $tmp_path;
     public $upload_directory = "images";
     public $errors = array();
     public $upload_error_array = array(
@@ -32,8 +32,8 @@ class Photo extends Db_object
 //    // This is passing $_FILES['uploaded_file'] as an argument
     public function set_file($file){
 
-        if (empty($file) || $file || !is_array($file)) {
-            $this->errors[] = "There was no file uploaded";
+        if (empty($file) || !$file || !is_array($file)) {
+            $this->errors[] = "There was no file uploaded here";
             return false;
 
         } elseif ($file['error'] != 0) {
@@ -42,7 +42,7 @@ class Photo extends Db_object
 
         } else {
             $this->filename = basename($file['name']);
-            $this->temp_path = $file['tmp_name'];
+            $this->tmp_path = $file['tmp_name'];
             $this->type = $file['type'];
             $this->size = $file['size'];
 
@@ -50,15 +50,18 @@ class Photo extends Db_object
     }
 
 
+    public function picture_path(){
+        return $this->upload_directory.DS.$this->filename;
+    }
+
     public function save(){
         if ($this->id) {
             $this->update();
-
         } else {
             if (!empty($this->errors)) {
                 return false;
             }
-            if (empty($this->filename) || empty($this->temp_path)) {
+            if (empty($this->filename) || empty($this->tmp_path)) {
                 $this->errors[] = "this file was not available";
             }
 
@@ -69,40 +72,19 @@ class Photo extends Db_object
                 return false;
             }
 
-            if (move_uploaded_file($this->temp_path, $target_path)){
+            if (move_uploaded_file($this->tmp_path, $target_path)){
 
                 if ($this->create()){
-                    unset($this->temp_path);
+                    unset($this->tmp_path);
                     return true;
                 }
+            }else{
+                $this_errors[]  = "The file directory probably does not have permission";
+                return false;
             }
-
-
-            $this->create();
 
         }
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
